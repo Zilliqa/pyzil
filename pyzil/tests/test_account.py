@@ -77,7 +77,7 @@ class TestAccount:
 
     def test_keystore(self):
         account = Account.from_keystore("zxcvbnm,", path_join("crypto", "zilliqa_keystore.json"))
-        assert account and account.address == "526a2719b5855ef7d396a62b912a0dfa08e6ae63"
+        assert account and account.address == "b028055ea3bc78d759d10663da40d171dec992aa"
 
         account = Account.from_keystore("1234", path_join("crypto", "zilliqa_keystore2.json"))
         assert account and account.address == "526a2719b5855ef7d396a62b912a0dfa08e6ae63"
@@ -87,7 +87,7 @@ class TestAccount:
             assert account and account.address == "526a2719b5855ef7d396a62b912a0dfa08e6ae63"
 
     def test_balance(self):
-        account = Account(address="b50c2404e699fd985f71b2c3f032059f13d6543b")
+        account = Account(address="381f4008505e940ad7681ec3468a719060caf796")
 
         balance = account.get_balance()
         print("balance", balance)
@@ -131,7 +131,7 @@ class TestAccount:
         # checksum address
         # check insufficient balance
         with pytest.raises(ValueError):
-            account2.transfer(account.checksum_address, 50000)
+            account2.transfer(account.checksum_address, balance + 1)
 
         txn_info = account2.transfer(account.checksum_address, Zil(10.3))
         pprint(txn_info)
@@ -228,7 +228,7 @@ class TestAccount:
         print("Account1 balance", repr(account.get_balance()))
         print("Account1 balance", repr(account.get_balance_qa()))
 
-        account = Account(private_key="d0b47febbef2bd0c4a4ee04aa20b60d61eb02635e8df5e7fd62409a2b1f5ddf8")
+        account = Account(private_key="e7f59a4beb997a02a13e0d5e025b39a6f0adc64d37bb1e6a849a4863b4680411")
         txn_info = account.transfer(account2.checksum_address, Qa(123456789), confirm=True)
         pprint(txn_info)
 
@@ -256,7 +256,7 @@ class TestAccount:
         print("Account1 balance", balance2)
         assert balance2 >= balance1 + 10.299
 
-        account = Account(private_key="d0b47febbef2bd0c4a4ee04aa20b60d61eb02635e8df5e7fd62409a2b1f5ddf8")
+        account = Account(private_key="e7f59a4beb997a02a13e0d5e025b39a6f0adc64d37bb1e6a849a4863b4680411")
         result = account.transfer(account2.bech32_address, 10.3, confirm=True, timeout=600, sleep=20)
         print("Transfer Result", result)
         pprint(account2.last_params)
