@@ -108,7 +108,7 @@ class Contract:
         return [
             Contract(
                 address=contract["address"],
-                state=contract["state"],
+                state=active_chain.api.GetSmartContractState(contract["address"]),
                 status=Contract.Status.Deployed
             )
             for contract in resp
