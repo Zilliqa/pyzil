@@ -90,12 +90,12 @@ class TestContract:
     def test_get_contracts(self):
         owner_addr = self.account.address
         contracts = Contract.get_contracts(owner_addr)
-        # pprint(contracts)
+        pprint(contracts)
 
-        # contracts2 = self.account.get_contracts()
-        # pprint(contracts2)
+        contracts2 = self.account.get_contracts()
+        pprint(contracts2)
 
-        # assert contracts == contracts2
+        assert contracts == contracts2
 
     def test_call(self):
         address = self.contracts["test"]
