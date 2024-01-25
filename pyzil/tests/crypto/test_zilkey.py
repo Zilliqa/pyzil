@@ -114,7 +114,7 @@ class TestZilKey:
     def test_keystore(self):
         key_file = path_join("zilliqa_keystore.json")
         key = crypto.ZilKey.load_keystore("zxcvbnm,", key_file)
-        checksum_address = crypto.zilkey.to_checksum_address("526a2719b5855ef7d396a62b912a0dfa08e6ae63")
+        checksum_address = crypto.zilkey.to_checksum_address("B028055EA3BC78D759d10663Da40D171dec992Aa")
         assert checksum_address == key.checksum_address
 
         keystore = key.save_keystore("1234", keystore_file=path_join("zilliqa_keystore3.json"))
