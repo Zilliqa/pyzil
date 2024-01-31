@@ -96,6 +96,22 @@ class TestAPI:
         print(api)
         assert api.GetNetworkId() == "333"
 
+        total_coin = api.GetTotalCoinSupply()
+        pprint(total_coin)
+        assert total_coin
+
+        version = api.GetVersion()
+        pprint(version)
+        assert version
+
+        type = api.GetNodeType()
+        pprint(type)
+        assert type
+ 
+        num_peers = api.GetNumPeers()
+        pprint(num_peers)
+        assert num_peers
+
         latest_txns = api.GetRecentTransactions()
         pprint(latest_txns)
 
@@ -110,6 +126,10 @@ class TestAPI:
             pprint(txns)
             assert txns
 
+            txns = api.GetTransactionsForTxBlockEx(tx_block, "0")
+            pprint(txns)
+            assert txns
+
         num_txns = api.GetNumTxnsTxEpoch()
         pprint(num_txns)
         assert num_txns
@@ -121,6 +141,10 @@ class TestAPI:
         gas_price = api.GetMinimumGasPrice()
         pprint(gas_price)
         assert gas_price
+
+        status = api.GetTransactionStatus("0xd3c2158e1e9b8676d3b589a3325028cc1ebe6a210a944aad95621f21081f4b20")
+        pprint(status)
+        assert status 
 
     def test_contract_apis(self):
         pass
