@@ -6,7 +6,7 @@
 
 * Zilliqa low-level APIs
 * Account and Transaction
-* Zilliqa ethash
+* ~~Zilliqa ethash~~ (No longer supported)
 * Smart Contract
 
 Python 3.6+ on macOS or Linux.
